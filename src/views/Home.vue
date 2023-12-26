@@ -1,35 +1,48 @@
 <template>
   <div class="view home-view">
-    <h1>
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus
-      dignissimos ipsum voluptatibus quae. Vel, consectetur vero perferendis eum
-      blanditiis natus pariatur doloremque sunt placeat qui laborum. Explicabo
-      dignissimos et unde?
-    </h1>
+    <div class="cards-container">
+      <Card
+        v-for="(pokemon, index) in pokemonsStore.pokemons"
+        :key="index"
+        :img="pokemon.sprites.other.home.front_default"
+        :colorName="pokemon.types[0].type.name"
+        :name="pokemon.name"
+        :id="pokemon.id"
+        :types="pokemon.types"
+      />
+    </div>
   </div>
 </template>
 
 <script setup>
-import { onMounted } from "vue";
+import { onMounted, computed } from "vue";
 import Loader from "@/components/shared/Loader.vue";
 import { useLoaderStore } from "../stores/loader";
+import { usePokemonsStore } from "../stores/pokemons";
+import Card from "../components/Card.vue";
 
-const loader = useLoaderStore();
+const loaderStore = useLoaderStore();
+const pokemonsStore = usePokemonsStore();
 
-const showLoader = () => {
-  loader.show();
+onMounted(() => {
+  pokemonsStore.getPokemons();
   setTimeout(() => {
-    loader.hide();
-  }, 2000);
-};
-
-// onMounted(() => {
-//   showLoader();
-// });
+    console.log(pokemonsStore.pokemons);
+  }, 1000);
+});
 </script>
 
 <style lang="scss" scoped>
 .home-view {
-  background: red;
+  background: white;
+  color: black;
+  .cards-container {
+    display: grid;
+    place-items: center;
+    justify-content: center;
+    grid-template-columns: auto auto auto auto auto;
+    gap: 2rem;
+    margin: 3rem 0;
+  }
 }
 </style>

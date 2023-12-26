@@ -3,11 +3,11 @@ import { RouterView } from "vue-router";
 import Loader from "@/components/shared/Loader.vue";
 import { useLoaderStore } from "./stores/loader";
 
-const loader = useLoaderStore();
+const loaderStore = useLoaderStore();
 </script>
 
 <template>
-  <Loader v-if="loader.showingValue" />
+  <Loader v-if="loaderStore.showingValue" />
   <RouterView />
 </template>
 
