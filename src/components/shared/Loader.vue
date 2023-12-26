@@ -1,24 +1,24 @@
 <template>
   <div class="view loader">
     <div class="pokeball-container">
-      <div class="pokeball">
-        <div class="pokeball-button"></div>
+      <div class="pokeball shake">
+        <div class="pokeball-button blink"></div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { onMounted } from "vue";
+// import { onMounted } from "vue";
 
-onMounted(() => {
-  const pokeball = document.querySelector(".pokeball");
-  const pokeballButton = document.querySelector(".pokeball-button");
-  setTimeout(() => {
-    pokeballButton.classList.add("blink");
-    pokeball.classList.add("shake");
-  }, 1260);
-});
+// onMounted(() => {
+//   const pokeball = document.querySelector(".pokeball");
+//   const pokeballButton = document.querySelector(".pokeball-button");
+//   setTimeout(() => {
+//     pokeballButton.classList.add("blink");
+//     pokeball.classList.add("shake");
+//   }, 1260);
+// });
 </script>
 
 <style lang="scss" scoped>
@@ -31,9 +31,9 @@ onMounted(() => {
   .pokeball-container {
     position: absolute;
     top: 50%;
-    left: -100%;
+    left: 50%;
     transform: translate(-50%, -50%);
-    animation: roll 1.2s cubic-bezier(0.36, 0.07, 0.19, 0.97) forwards;
+    // animation: roll 1.2s cubic-bezier(0.36, 0.07, 0.19, 0.97) forwards;
 
     .pokeball {
       position: relative;
