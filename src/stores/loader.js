@@ -2,7 +2,7 @@ import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 
 export const useLoaderStore = defineStore("loader", () => {
-  const showing = ref(true);
+  const showing = ref(false);
 
   function show() {
     showing.value = true;
