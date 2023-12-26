@@ -45,4 +45,35 @@ onMounted(() => {
     margin: 3rem 0;
   }
 }
+
+@media screen and (max-width: 1830px) {
+  .home-view {
+    .cards-container {
+      grid-template-columns: auto auto auto auto;
+    }
+  }
+}
+@media screen and (max-width: 1460px) {
+  .home-view {
+    .cards-container {
+      grid-template-columns: auto auto auto;
+    }
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .home-view {
+    .cards-container {
+      grid-template-columns: auto auto;
+    }
+  }
+}
+
+@media screen and (max-width: 730px) {
+  .home-view {
+    .cards-container {
+      grid-template-columns: auto;
+    }
+  }
+}
 </style>

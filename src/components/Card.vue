@@ -45,6 +45,7 @@ const props = defineProps({
 <style lang="scss" scoped>
 .card {
   width: 334px;
+  max-width: 90vw;
   height: 115px;
   border-radius: 10px;
   display: flex;
@@ -186,6 +187,17 @@ const props = defineProps({
   }
   &.fairy {
     background-color: #ed6ec7;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .card {
+    .card-image-container {
+      .pokemon-image {
+        height: 65%;
+        margin-left: 35%;
+      }
+    }
   }
 }
 </style>

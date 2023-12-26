@@ -12,10 +12,10 @@ const loaderStore = useLoaderStore();
 </template>
 
 <style lang="scss">
-/* @font-face {
+@font-face {
   font-family: "SF Pro Display";
-  src: url("./fonts/SFProDisplay/SFProDisplay.ttf");
-} */
+  src: url("./assets/fonts/SFProDisplay/SFProDisplay.ttf");
+}
 * {
   margin: 0;
   padding: 0;
