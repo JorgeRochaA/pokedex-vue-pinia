@@ -1,6 +1,7 @@
 <template>
   <div class="view home-view">
     <div class="cards-container">
+      <!--pokemon.sprites.other.home.front_default only has images up to #905-->
       <Card
         v-for="(pokemon, index) in pokemonsStore.pokemons"
         :key="index"
