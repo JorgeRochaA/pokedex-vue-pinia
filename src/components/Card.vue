@@ -1,5 +1,5 @@
 <template>
-  <div class="card" :class="colorName" v-on:click="moreInfo()">
+  <div class="card" :class="colorName" v-on:click="moreInfo(id)">
     <div class="card-info-container">
       <img
         class="pattern"
@@ -32,6 +32,9 @@
 
 <script setup>
 import { getImageUrl } from "../utils/utils";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 const props = defineProps({
   colorName: String,
@@ -40,6 +43,10 @@ const props = defineProps({
   name: String,
   types: Array,
 });
+
+const moreInfo = (id) => {
+  router.push({ name: "pokemon", params: { id } });
+};
 </script>
 
 <style lang="scss" scoped>
