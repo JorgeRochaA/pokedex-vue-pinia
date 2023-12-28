@@ -25,6 +25,7 @@
           <NextPrevious />
           <div class="data-container">
             <PokemonData />
+            <PokemonStats />
             <PokemonEvolution />
           </div>
         </div>
@@ -41,6 +42,7 @@ import { useCurrentPokemonStore } from "../stores/currentPokemon";
 import { getImageUrl } from "../utils/utils";
 import NextPrevious from "../components/NextPrevious.vue";
 import PokemonData from "../components/PokemonData.vue";
+import PokemonStats from "../components/PokemonStats.vue";
 import PokemonEvolution from "../components/PokemonEvolution.vue";
 
 const currentPokemonStore = useCurrentPokemonStore();
@@ -75,213 +77,215 @@ watch(
 </script>
 
 <style scoped lang="scss">
-.pokemon-info-container {
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 100vh;
-  transition: 0.5s;
-
-  .pokeball-container {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    pointer-events: none;
-    display: flex;
-    justify-content: flex-end;
-    img {
-      height: 300px;
-      transform: rotate(320deg);
-    }
-  }
-
-  @mixin mb_50px {
-    margin-bottom: 50px;
-  }
-  @mixin define_height($p_height) {
-    min-height: $p_height !important;
-  }
-
-  .pokemon-info {
-    width: 90vw;
+.pokemon-info-view {
+  .pokemon-info-container {
+    overflow: hidden;
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    @include mb_50px;
+    min-height: 100vh;
+    transition: 0.5s;
 
-    .pokemon-img {
-      margin-top: 30px;
-      height: 150px;
+    .pokeball-container {
+      position: absolute;
+      top: 0;
+      right: 0;
       width: 100%;
-      position: relative;
+      pointer-events: none;
       display: flex;
       justify-content: flex-end;
-      align-items: flex-start;
-
-      .img-container {
-        height: 250px;
-        display: flex;
-        align-items: center;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        margin: auto;
-
-        img {
-          margin-top: 30px;
-          height: 100%;
-          position: absolute;
-          pointer-events: none;
-          z-index: 4;
-          &.animated {
-            animation: slide 1s ease 0s 1 normal forwards;
-          }
-        }
+      img {
+        height: 300px;
+        transform: rotate(320deg);
       }
     }
 
-    .info-container {
-      height: 700px;
-      width: 100%;
-      border-radius: 10px;
-      background-color: white;
-      position: relative;
-      z-index: 2;
-      .data-container {
-        height: calc(100% - 80px);
-        display: grid;
-        place-items: center;
-        justify-content: center;
-        grid-template-columns: auto auto auto;
-        gap: 100px;
-      }
+    @mixin mb_50px {
+      margin-bottom: 50px;
     }
-  }
-  @media screen and (min-width: 700px) {
-    .img-container {
-      justify-content: center;
+    @mixin define_height($p_height) {
+      min-height: $p_height !important;
     }
-  }
-  @media only screen and (min-width: 768px) and (max-width: 991px) and (orientation: landscape) {
-    .img-container {
-      justify-content: center;
-    }
-    .info-container {
-      @include mb_50px;
-      @include define_height(400px);
-    }
-  }
 
-  @media only screen and (min-width: 576px) and (max-width: 767px) {
-    .img-container {
-      justify-content: center;
-    }
-    .info-container {
-      @include mb_50px;
-      @include define_height(500px);
-    }
-  }
-
-  @media only screen and (max-width: 575px) {
-    .img-container {
-      justify-content: center;
-    }
-    .info-container {
+    .pokemon-info {
+      width: 90vw;
       display: flex;
       flex-direction: column;
       align-items: center;
       @include mb_50px;
-      @include define_height(500px);
-    }
-  }
 
-  @media screen and (max-width: 1425px) {
-    .info-container,
-    .pokemon-info {
-      height: 2050px;
-      background: white;
-      border-radius: 10px;
-    }
-    .data-container {
-      grid-template-columns: auto !important;
-    }
-  }
+      .pokemon-img {
+        margin-top: 30px;
+        height: 150px;
+        width: 100%;
+        position: relative;
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-start;
 
-  @media only screen and (max-width: 410px) {
-    .info-container,
-    .pokemon-info {
-      height: 2150px;
+        .img-container {
+          height: 250px;
+          display: flex;
+          align-items: center;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          margin: auto;
+
+          img {
+            margin-top: 30px;
+            height: 100%;
+            position: absolute;
+            pointer-events: none;
+            z-index: 4;
+            &.animated {
+              animation: slide 1s ease 0s 1 normal forwards;
+            }
+          }
+        }
+      }
+
+      .info-container {
+        height: 700px;
+        width: 100%;
+        border-radius: 10px;
+        background-color: white;
+        position: relative;
+        z-index: 2;
+        .data-container {
+          height: calc(100% - 80px);
+          display: grid;
+          place-items: center;
+          justify-content: center;
+          grid-template-columns: auto auto auto;
+          gap: 100px;
+        }
+      }
     }
-  }
-  // Animation
-  @keyframes slide {
-    0% {
-      transform: translateX(-150%);
+    @media screen and (min-width: 700px) {
+      .img-container {
+        justify-content: center;
+      }
+    }
+    @media only screen and (min-width: 768px) and (max-width: 991px) and (orientation: landscape) {
+      .img-container {
+        justify-content: center;
+      }
+      .info-container {
+        @include mb_50px;
+        @include define_height(400px);
+      }
     }
 
-    100% {
-      transform: translateX(0px);
+    @media only screen and (min-width: 576px) and (max-width: 767px) {
+      .img-container {
+        justify-content: center;
+      }
+      .info-container {
+        @include mb_50px;
+        @include define_height(500px);
+      }
     }
-  }
 
-  &.normal {
-    background-color: #a8a77a;
-  }
-  &.fire {
-    background-color: #fd7d24;
-  }
-  &.water {
-    background-color: #4a90da;
-  }
-  &.electric {
-    background-color: #f7d02c;
-  }
-  &.grass {
-    background-color: #62b957;
-  }
-  &.ice {
-    background-color: #96d9d6;
-  }
-  &.fighting {
-    background-color: #c22e28;
-  }
-  &.poison {
-    background-color: #a33ea1;
-  }
-  &.ground {
-    background-color: #e2bf65;
-  }
-  &.flying {
-    background-color: #748fc9;
-  }
-  &.psychic {
-    background-color: #f95587;
-  }
-  &.bug {
-    background-color: #a6b91a;
-  }
-  &.rock {
-    background-color: #b6a136;
-  }
-  &.ghost {
-    background-color: #735797;
-  }
-  &.dragon {
-    background-color: #0f6ac0;
-  }
-  &.dark {
-    background-color: #58575f;
-  }
-  &.steel {
-    background-color: #417d9a;
-  }
-  &.fairy {
-    background-color: #ed6ec7;
+    @media only screen and (max-width: 575px) {
+      .img-container {
+        justify-content: center;
+      }
+      .info-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        @include mb_50px;
+        @include define_height(500px);
+      }
+    }
+
+    @media screen and (max-width: 1425px) {
+      .info-container,
+      .pokemon-info {
+        height: 2050px;
+        background: white;
+        border-radius: 10px;
+      }
+      .data-container {
+        grid-template-columns: auto !important;
+      }
+    }
+
+    @media only screen and (max-width: 410px) {
+      .info-container,
+      .pokemon-info {
+        height: 2150px;
+      }
+    }
+    // Animation
+    @keyframes slide {
+      0% {
+        transform: translateX(-150%);
+      }
+
+      100% {
+        transform: translateX(0px);
+      }
+    }
+
+    &.normal {
+      background-color: #a8a77a;
+    }
+    &.fire {
+      background-color: #fd7d24;
+    }
+    &.water {
+      background-color: #4a90da;
+    }
+    &.electric {
+      background-color: #f7d02c;
+    }
+    &.grass {
+      background-color: #62b957;
+    }
+    &.ice {
+      background-color: #96d9d6;
+    }
+    &.fighting {
+      background-color: #c22e28;
+    }
+    &.poison {
+      background-color: #a33ea1;
+    }
+    &.ground {
+      background-color: #e2bf65;
+    }
+    &.flying {
+      background-color: #748fc9;
+    }
+    &.psychic {
+      background-color: #f95587;
+    }
+    &.bug {
+      background-color: #a6b91a;
+    }
+    &.rock {
+      background-color: #b6a136;
+    }
+    &.ghost {
+      background-color: #735797;
+    }
+    &.dragon {
+      background-color: #0f6ac0;
+    }
+    &.dark {
+      background-color: #58575f;
+    }
+    &.steel {
+      background-color: #417d9a;
+    }
+    &.fairy {
+      background-color: #ed6ec7;
+    }
   }
 }
 </style>
