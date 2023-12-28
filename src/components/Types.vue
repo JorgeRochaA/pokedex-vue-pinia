@@ -3,7 +3,7 @@
     <img
       v-for="type in currentPokemonStore.currentPokemon?.types"
       :key="type.slot"
-      :src="getImageUrl(`assets/badges/${type.type.name}.svg`)"
+      :src="getImageUrl(`badges/${type.type.name}.svg`)"
       :alt="type.type.name"
     />
   </div>
