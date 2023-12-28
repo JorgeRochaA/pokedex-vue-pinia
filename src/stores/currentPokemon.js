@@ -1,11 +1,14 @@
 import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 import axios from "axios";
+import { useLoaderStore } from "./loader";
 
 export const useCurrentPokemonStore = defineStore("currentPokemon", () => {
   const currentPokemonRef = ref(null);
+  const loaderStore = useLoaderStore();
 
   const getCurrentPokemon = async (id) => {
+    loaderStore.show();
     try {
       const [pokemonResponse, speciesResponse] = await Promise.all([
         axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`),
@@ -31,7 +34,10 @@ export const useCurrentPokemonStore = defineStore("currentPokemon", () => {
         evolution.data.sprites = pokemonData.data.sprites;
         evolution.data.types = pokemonData.data.types;
       }
+
+      loaderStore.hide();
     } catch (error) {
+      loaderStore.hide();
       console.error(error);
     }
   };
