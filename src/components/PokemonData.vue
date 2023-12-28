@@ -56,11 +56,11 @@
       </div>
       <div class="genres">
         <div class="values">
-          <img src="genres/male.svg" alt="male" />
+          <img :src="getImageUrl('genres/male.svg')" alt="male" />
           <p>{{ genderRate.male }}%</p>
         </div>
         <div class="values">
-          <img src="genres/female.svg" alt="" />
+          <img :src="getImageUrl('genres/female.svg')" alt="" />
           <p>{{ genderRate.female }}%</p>
         </div>
       </div>
@@ -73,6 +73,7 @@ import Types from "./Types.vue";
 import { useCurrentPokemonStore } from "../stores/currentPokemon";
 import DataCard from "./DataCard.vue";
 import { computed } from "vue";
+import { getImageUrl } from "../utils/utils";
 
 const currentPokemonStore = useCurrentPokemonStore();
 
