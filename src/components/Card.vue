@@ -3,7 +3,7 @@
     <div class="card-info-container">
       <img
         class="pattern"
-        :src="getImageUrl('../assets/pattern/pattern.png')"
+        :src="getImageUrl('pattern/pattern.png')"
         alt="pattern"
       />
       <div class="pokemon-number" v-if="id < 10">#00{{ id }}</div>
@@ -13,7 +13,7 @@
       <div class="pokemon-type">
         <div v-for="(type, index) in types" :key="index">
           <img
-            :src="getImageUrl(`../assets/badges/${type.type.name}.svg`)"
+            :src="getImageUrl(`badges/${type.type.name}.svg`)"
             :alt="type.type.name"
           />
         </div>
@@ -22,7 +22,7 @@
     <div class="card-image-container">
       <img
         class="pokeball"
-        :src="getImageUrl('../assets/shadow/pokeball-shadow.svg')"
+        :src="getImageUrl('shadow/pokeball-shadow.svg')"
         alt="pokeball"
       />
       <img class="pokemon-image" :src="img" :alt="name" />
