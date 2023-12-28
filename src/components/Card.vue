@@ -1,5 +1,5 @@
 <template>
-  <div class="card" :class="colorName" v-on:click="moreInfo(id)">
+  <div class="card" :class="colorName" @click="moreInfo(id)">
     <div class="card-info-container">
       <img
         class="pattern"

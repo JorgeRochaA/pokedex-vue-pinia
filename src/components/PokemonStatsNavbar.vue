@@ -1,6 +1,6 @@
 <template>
   <div class="info-navbar">
-    <div class="arrow-container" v-on:click="goBack()">
+    <div class="arrow-container" @click="goBack()">
       <img src="../assets/arrows/arrow-left.svg" alt="go-back" />
     </div>
     <div class="name-container">
@@ -38,6 +38,11 @@ const goBack = () => {
   align-items: center;
   font-family: "SF Pro Display";
   color: white;
+  h2,
+  h3 {
+    font-size: 23px;
+    font-weight: 1000;
+  }
 
   .arrow-container {
     height: 100%;
