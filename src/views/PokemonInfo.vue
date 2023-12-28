@@ -74,7 +74,6 @@ const addAnimation = () => {
 watch(
   () => currentPokemonStore.currentPokemon,
   () => {
-    console.log(currentPokemonStore.currentPokemon);
     addAnimation();
   }
 );
