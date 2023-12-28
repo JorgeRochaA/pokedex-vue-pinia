@@ -10,6 +10,7 @@
         :name="pokemon.name"
         :id="pokemon.id"
         :types="pokemon.types"
+        :isHome="true"
       />
     </div>
 

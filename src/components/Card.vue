@@ -1,5 +1,9 @@
 <template>
-  <div class="card" :class="colorName" @click="moreInfo(id)">
+  <div
+    class="card"
+    :class="`${colorName} ${isHome ? 'is-home' : ''}`"
+    @click="moreInfo(id)"
+  >
     <div class="card-info-container">
       <img
         class="pattern"
@@ -42,10 +46,13 @@ const props = defineProps({
   img: String,
   name: String,
   types: Array,
+  isHome: Boolean,
 });
 
 const moreInfo = (id) => {
-  router.push({ name: "pokemon", params: { id } });
+  if (props.isHome) {
+    router.push({ name: "pokemon", params: { id } });
+  }
 };
 </script>
 
@@ -60,7 +67,6 @@ const moreInfo = (id) => {
   font-style: normal;
   transition: 0.5s;
   overflow: hidden;
-  background-color: blue;
   .card-info-container {
     height: 100%;
     width: 50%;
@@ -137,7 +143,7 @@ const moreInfo = (id) => {
       margin-left: 35%;
     }
   }
-  &:hover {
+  &.is-home:hover {
     cursor: pointer;
     transform: scale(1.1);
   }

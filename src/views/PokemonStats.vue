@@ -25,6 +25,7 @@
           <NextPrevious />
           <div class="data-container">
             <PokemonData />
+            <PokemonEvolution />
           </div>
         </div>
       </div>
@@ -40,6 +41,7 @@ import { useCurrentPokemonStore } from "../stores/currentPokemon";
 import { getImageUrl } from "../utils/utils";
 import NextPrevious from "../components/NextPrevious.vue";
 import PokemonData from "../components/PokemonData.vue";
+import PokemonEvolution from "../components/PokemonEvolution.vue";
 
 const currentPokemonStore = useCurrentPokemonStore();
 const router = useRouter();
@@ -144,7 +146,7 @@ watch(
     }
 
     .info-container {
-      height: 600px;
+      height: 700px;
       width: 100%;
       border-radius: 10px;
       background-color: white;
@@ -152,9 +154,11 @@ watch(
       z-index: 2;
       .data-container {
         height: calc(100% - 80px);
-        display: flex;
+        display: grid;
+        place-items: center;
         justify-content: center;
-        align-items: flex-start;
+        grid-template-columns: auto auto auto;
+        gap: 100px;
       }
     }
   }
@@ -196,11 +200,22 @@ watch(
     }
   }
 
+  @media screen and (max-width: 1425px) {
+    .info-container,
+    .pokemon-info {
+      height: 2050px;
+      background: white;
+      border-radius: 10px;
+    }
+    .data-container {
+      grid-template-columns: auto !important;
+    }
+  }
+
   @media only screen and (max-width: 410px) {
     .info-container,
     .pokemon-info {
-      height: 1050px;
-      background: white;
+      height: 2150px;
     }
   }
   // Animation
