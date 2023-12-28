@@ -36,6 +36,7 @@ export const usePokemonsStore = defineStore("pokemons", () => {
       pokemonsRef.value = pokemons.sort((a, b) => a.id - b.id);
       loadingStore.hide();
     } catch (error) {
+      loadingStore.hide();
       console.error(error);
     }
   }

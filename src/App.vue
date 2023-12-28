@@ -1,9 +1,21 @@
 <script setup>
+import { watch } from "vue";
 import { RouterView } from "vue-router";
 import Loader from "./components/shared/Loader.vue";
 import { useLoaderStore } from "./stores/loader";
 
 const loaderStore = useLoaderStore();
+
+watch(
+  () => loaderStore.showingValue,
+  () => {
+    if (loaderStore.showingValue) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }
+);
 </script>
 
 <template>
