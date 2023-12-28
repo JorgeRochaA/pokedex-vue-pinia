@@ -1,21 +1,28 @@
 <template>
   <div class="pokemon-stats-container">
     <div class="stats-container">
-      <!-- <div class="strengths">
+      <div class="strengths">
         <h2 class="strengths-title">Strengths</h2>
         <div class="strengths-list">
-          <Types />
-          <Types />
+          <img
+            v-for="type in strengths"
+            :key="type.name"
+            :src="getImageUrl(`badges/${type.name}.svg`)"
+            :alt="type.name"
+          />
         </div>
       </div>
       <div class="weaknesses">
         <h2 class="weaknesses-title">Weaknesses</h2>
         <div class="weaknesses-list">
-          <Types />
-          <Types />
+          <img
+            v-for="type in weaknesses"
+            :key="type.name"
+            :src="getImageUrl(`badges/${type.name}.svg`)"
+            :alt="type.name"
+          />
         </div>
-      </div> -->
-
+      </div>
       <div class="stats">
         <h2 class="stats-title">Stats</h2>
         <div class="stats-list">
@@ -42,10 +49,19 @@
 import Types from "../components/Types.vue";
 import { useCurrentPokemonStore } from "../stores/currentPokemon";
 import { computed } from "vue";
+import { getImageUrl } from "../utils/utils";
 
 const currentPokemonStore = useCurrentPokemonStore();
 const stats = computed(() => {
   return currentPokemonStore.currentPokemon?.stats;
+});
+
+const strengths = computed(() => {
+  return currentPokemonStore.currentPokemon?.strengths;
+});
+
+const weaknesses = computed(() => {
+  return currentPokemonStore.currentPokemon?.weaknesses;
 });
 </script>
 
@@ -58,6 +74,25 @@ const stats = computed(() => {
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+
+    .strengths,
+    .weaknesses {
+      h2 {
+        height: 45px;
+      }
+    }
+
+    .strengths-list,
+    .weaknesses-list {
+      margin: 12px 0;
+      max-width: 328px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      img {
+        height: 30px;
+      }
+    }
 
     .stats {
       .stats-list {
@@ -118,6 +153,10 @@ const stats = computed(() => {
     .stats-container {
       max-width: 80vw;
       text-align: center;
+      .strengths-list,
+      .weaknesses-list {
+        justify-content: center;
+      }
       .stats {
         .stats-list {
           .stat {

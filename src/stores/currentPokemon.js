@@ -35,6 +35,10 @@ export const useCurrentPokemonStore = defineStore("currentPokemon", () => {
         evolution.data.types = pokemonData.data.types;
       }
 
+      getStrengths();
+
+      getWeaknesses();
+
       loaderStore.hide();
     } catch (error) {
       loaderStore.hide();
@@ -55,6 +59,52 @@ export const useCurrentPokemonStore = defineStore("currentPokemon", () => {
     if (evolution_chain.evolves_to.length > 0) {
       getEvolution(evolution_chain.evolves_to[0]);
     }
+  };
+
+  const getStrengths = async () => {
+    currentPokemonRef.value.strengths = [];
+    const strengths = [];
+
+    for (const type of currentPokemonRef.value.types) {
+      const typeResponse = await axios.get(type.type.url);
+      const doubleDamageTo =
+        typeResponse.data.damage_relations.double_damage_to;
+
+      doubleDamageTo.forEach((strength) => {
+        if (
+          !strengths.some(
+            (existingStrength) => existingStrength.name === strength.name
+          )
+        ) {
+          strengths.push(strength);
+        }
+      });
+    }
+
+    currentPokemonRef.value.strengths = strengths;
+  };
+
+  const getWeaknesses = async () => {
+    currentPokemonRef.value.weaknesses = [];
+    const weaknesses = [];
+
+    for (const type of currentPokemonRef.value.types) {
+      const typeResponse = await axios.get(type.type.url);
+      const doubleDamageFrom =
+        typeResponse.data.damage_relations.double_damage_from;
+
+      doubleDamageFrom.forEach((weakness) => {
+        if (
+          !weaknesses.some(
+            (existingWeakness) => existingWeakness.name === weakness.name
+          )
+        ) {
+          weaknesses.push(weakness);
+        }
+      });
+    }
+
+    currentPokemonRef.value.weaknesses = weaknesses;
   };
 
   const currentPokemon = computed(() => currentPokemonRef.value);

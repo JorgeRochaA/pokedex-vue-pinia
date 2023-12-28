@@ -9,7 +9,11 @@
         :key="index"
         :name="evolution?.data?.name"
         :id="evolution?.data?.id"
-        :img="evolution?.data?.sprites?.other.home.front_default"
+        :img="
+          currentPokemonStore.currentPokemon?.id > 905
+            ? evolution?.data?.sprites?.front_default
+            : evolution?.data?.sprites?.other?.home?.front_default
+        "
         :types="evolution?.data?.types"
         :colorName="evolution?.data?.types?.[0].type.name"
         :isHome="false"

@@ -11,11 +11,14 @@
       <div class="pokemon-info">
         <div class="pokemon-img">
           <div class="img-container" id="img-container">
+            <!--change when images change for new pokemon generation : generation #9-->
             <img
               class="animated-img"
               :src="
-                currentPokemonStore.currentPokemon?.sprites?.other.home
-                  .front_default
+                currentPokemonStore.currentPokemon?.id > 905
+                  ? currentPokemonStore.currentPokemon?.sprites.front_default
+                  : currentPokemonStore.currentPokemon?.sprites?.other.home
+                      .front_default
               "
               :alt="currentPokemonStore.currentPokemon?.name"
             />
@@ -71,6 +74,7 @@ const addAnimation = () => {
 watch(
   () => currentPokemonStore.currentPokemon,
   () => {
+    console.log(currentPokemonStore.currentPokemon);
     addAnimation();
   }
 );
@@ -218,7 +222,7 @@ watch(
     @media only screen and (max-width: 410px) {
       .info-container,
       .pokemon-info {
-        height: 2150px;
+        height: 2275px;
       }
     }
     // Animation
