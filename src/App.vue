@@ -1,6 +1,6 @@
 <script setup>
 import { RouterView } from "vue-router";
-import Loader from "@/components/shared/Loader.vue";
+import Loader from "./components/shared/Loader.vue";
 import { useLoaderStore } from "./stores/loader";
 
 const loaderStore = useLoaderStore();

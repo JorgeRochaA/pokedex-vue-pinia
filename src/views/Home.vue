@@ -32,7 +32,7 @@
 
 <script setup>
 import { onMounted, computed } from "vue";
-import Loader from "@/components/shared/Loader.vue";
+import Loader from "../components/shared/Loader.vue";
 import { useLoaderStore } from "../stores/loader";
 import { usePokemonsStore } from "../stores/pokemons";
 import Card from "../components/Card.vue";
