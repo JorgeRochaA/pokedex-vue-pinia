@@ -1,14 +1,14 @@
 <template>
-  <div class="view pokemon-stats-view">
+  <div class="view pokemon-info-view">
     <div
-      class="pokemon-stats-container"
+      class="pokemon-info-container"
       :class="currentPokemonStore.currentPokemon?.types[0].type.name"
     >
       <PokemonStatsNavbar />
       <div class="pokeball-container">
         <img :src="getImageUrl('shadow/pokeball-shadow.svg')" alt="poke" />
       </div>
-      <div class="pokemonStats">
+      <div class="pokemon-info">
         <div class="pokemon-img">
           <div class="img-container" id="img-container">
             <img
@@ -21,7 +21,7 @@
             />
           </div>
         </div>
-        <div class="stats-container">
+        <div class="info-container">
           <NextPrevious />
           <div class="data-container">
             <PokemonData />
@@ -73,7 +73,7 @@ watch(
 </script>
 
 <style scoped lang="scss">
-.pokemon-stats-container {
+.pokemon-info-container {
   overflow: hidden;
   position: relative;
   display: flex;
@@ -103,7 +103,7 @@ watch(
     min-height: $p_height !important;
   }
 
-  .pokemonStats {
+  .pokemon-info {
     width: 90vw;
     display: flex;
     flex-direction: column;
@@ -143,7 +143,7 @@ watch(
       }
     }
 
-    .stats-container {
+    .info-container {
       height: 600px;
       width: 100%;
       border-radius: 10px;
@@ -167,7 +167,7 @@ watch(
     .img-container {
       justify-content: center;
     }
-    .stats-container {
+    .info-container {
       @include mb_50px;
       @include define_height(400px);
     }
@@ -177,7 +177,7 @@ watch(
     .img-container {
       justify-content: center;
     }
-    .stats-container {
+    .info-container {
       @include mb_50px;
       @include define_height(500px);
     }
@@ -187,7 +187,7 @@ watch(
     .img-container {
       justify-content: center;
     }
-    .stats-container {
+    .info-container {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -197,8 +197,8 @@ watch(
   }
 
   @media only screen and (max-width: 410px) {
-    .stats-container,
-    .pokemonStats {
+    .info-container,
+    .pokemon-info {
       height: 1050px;
       background: white;
     }
