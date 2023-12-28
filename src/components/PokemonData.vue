@@ -24,26 +24,26 @@
     <div class="bar"></div>
     <div class="pokemon-info">
       <DataCard
-        :icon="'../assets/data/weight.svg'"
+        :icon="'data/weight.svg'"
         :title="'Weight'"
         :value="
           (currentPokemonStore.currentPokemon?.weight * 0.1).toFixed(1) + 'Kg'
         "
       />
       <DataCard
-        :icon="'../assets/data/height.svg'"
+        :icon="'data/height.svg'"
         :title="'Height'"
         :value="
           (currentPokemonStore.currentPokemon?.height * 0.1).toFixed(1) + 'M'
         "
       />
       <DataCard
-        :icon="'../assets/data/category.svg'"
+        :icon="'data/category.svg'"
         :title="'Category'"
         :value="cleanedCategory"
       />
       <DataCard
-        :icon="'../assets/data/ability.svg'"
+        :icon="'data/ability.svg'"
         :title="'Ability'"
         :value="currentPokemonStore.currentPokemon?.abilities[0].ability.name"
       />
@@ -56,11 +56,11 @@
       </div>
       <div class="genres">
         <div class="values">
-          <img src="../assets/genres/male.svg" alt="male" />
+          <img src="genres/male.svg" alt="male" />
           <p>{{ genderRate.male }}%</p>
         </div>
         <div class="values">
-          <img src="../assets/genres/female.svg" alt="" />
+          <img src="genres/female.svg" alt="" />
           <p>{{ genderRate.female }}%</p>
         </div>
       </div>

@@ -6,10 +6,7 @@
     >
       <PokemonStatsNavbar />
       <div class="pokeball-container">
-        <img
-          :src="getImageUrl('../assets/shadow/pokeball-shadow.svg')"
-          alt="poke"
-        />
+        <img :src="getImageUrl('shadow/pokeball-shadow.svg')" alt="poke" />
       </div>
       <div class="pokemonStats">
         <div class="pokemon-img">

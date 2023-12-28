@@ -1,7 +1,7 @@
 <template>
   <div class="info-navbar">
     <div class="arrow-container" @click="goBack()">
-      <img src="../assets/arrows/arrow-left.svg" alt="go-back" />
+      <img src="arrows/arrow-left.svg" alt="go-back" />
     </div>
     <div class="name-container">
       <h2>{{ currentPokemonStore.currentPokemon?.name }}</h2>

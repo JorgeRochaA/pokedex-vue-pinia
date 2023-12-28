@@ -3,7 +3,7 @@
     <img
       v-if="currentPokemonStore.currentPokemon?.id > 1"
       class="left"
-      :src="getImageUrl('../assets/arrows/arrow-right.svg')"
+      :src="getImageUrl('arrows/arrow-right.svg')"
       alt="arrow-left"
       @click="navigatePokemon('previous')"
     />
@@ -11,7 +11,7 @@
     <img
       v-if="currentPokemonStore.currentPokemon?.id < 1025"
       class="right"
-      :src="getImageUrl('../assets/arrows/arrow-right.svg')"
+      :src="getImageUrl('arrows/arrow-right.svg')"
       alt="arrow-right"
       @click="navigatePokemon('next')"
     />
