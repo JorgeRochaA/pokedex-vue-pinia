@@ -62,7 +62,8 @@ const pokemonEvolution = computed(() => {
     justify-content: center;
     align-items: center;
     img {
-      max-width: 93%;
+      width: 334px;
+      max-width: 80vw;
     }
     .evolutions-container {
       max-width: 80vw;
