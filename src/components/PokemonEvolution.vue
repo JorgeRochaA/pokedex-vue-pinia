@@ -10,7 +10,7 @@
         :name="evolution?.data?.name"
         :id="evolution?.data?.id"
         :img="
-          currentPokemonStore.currentPokemon?.id > 905
+          currentPokemonStore.currentPokemon?.id > 1025
             ? evolution?.data?.sprites?.front_default
             : evolution?.data?.sprites?.other?.home?.front_default
         "
