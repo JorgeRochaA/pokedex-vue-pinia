@@ -15,7 +15,7 @@
             <img
               class="animated-img"
               :src="
-                currentPokemonStore.currentPokemon?.id > 905
+                currentPokemonStore.currentPokemon?.id > 1025
                   ? currentPokemonStore.currentPokemon?.sprites.front_default
                   : currentPokemonStore.currentPokemon?.sprites?.other.home
                       .front_default
